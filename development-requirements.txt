@@ -1,0 +1,4 @@
+mypy>=0.770
+pytest>=5.4.1
+pylint>=2.4.4
+wheel>=0.34.2
