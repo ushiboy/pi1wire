@@ -2,8 +2,9 @@ import glob
 import os
 from typing import List
 from ._driver import W1Driver
+from ._exception import NotFoundSensorException
 from ._sensor import OneWireInterface, OneWire
-from ._util import dirname_to_mac
+from ._util import dirname_to_mac, mac_to_dirname
 
 
 class Pi1WireInterface:
@@ -28,4 +29,7 @@ class Pi1Wire(Pi1WireInterface):
         return sensors
 
     def find(self, mac_address: str) -> OneWireInterface:
+        p = os.path.join(self._base_path, mac_to_dirname(mac_address))
+        if not os.path.exists(p):
+            raise NotFoundSensorException('Not found sensor [%s]' % mac_address)
         return OneWire(mac_address, self._driver)

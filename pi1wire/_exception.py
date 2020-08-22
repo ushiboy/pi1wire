@@ -1,8 +1,14 @@
 class InvalidCRCException(Exception):
     '''
-    CRC Error
+    Invalid CRC
     '''
+
+class NotFoundSensorException(Exception):
+    '''
+    Sensor Not found
+    '''
+
 class UnsupportResponseException(Exception):
     '''
-    Parse Error
+    Unsupport Response
     '''

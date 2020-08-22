@@ -1,4 +1,6 @@
 import os
+import pytest
+from pi1wire._exception import NotFoundSensorException
 from pi1wire._finder import Pi1Wire
 from ._fixture import temp_dir_path
 
@@ -18,3 +20,6 @@ def test_find(temp_dir_path):
 
     p = Pi1Wire(base_path=temp_dir_path)
     assert p.find('28000000654321').mac_address == '28000000654321'
+
+    with pytest.raises(NotFoundSensorException):
+        p.find('28000000000000')
