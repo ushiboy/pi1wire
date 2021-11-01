@@ -18,6 +18,7 @@ class OneWire(OneWireInterface):
     def __init__(self, mac_address: str, driver: W1DriverInterface):
         self._mac_address = mac_address
         self._driver = driver
+        self._power_on_reset_value = 85000
 
     def get_temperature(self) -> float:
         r = self._driver.read_w1_data(self._mac_address)
