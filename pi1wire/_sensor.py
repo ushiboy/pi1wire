@@ -25,6 +25,6 @@ class OneWire(OneWireInterface):
         crc, check, raw_value = parse_response(r)
         if check != 'YES':
             raise InvalidCRCException('Invalid CRC [%s]' % crc)
-        if  raw_value == self._power_on_reset_value:
+        if  int(raw_value) == self._power_on_reset_value:
             raise PowerOnResetValueException('Value equal to PowerOnResetValue (85DegC)')
         return int(raw_value) / 1000.0
