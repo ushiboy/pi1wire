@@ -13,7 +13,7 @@ with open('README.md', 'r') as f:
 
 setup(
     name='pi1wire',
-    version='0.1.0',
+    version='0.2.0',
     author='ushiboy',
     license='MIT',
     description='1Wire Sensor Library for Raspberry PI',

@@ -50,6 +50,10 @@ Get the temperature.
 
 ## Change Log
 
+### 0.2.0
+
+Added check for PowerOnResetValue.
+
 ### 0.1.0
 
 Initial release.
