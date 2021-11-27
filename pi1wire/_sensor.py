@@ -30,7 +30,7 @@ class OneWire(OneWireInterface):
         value = int(raw_value)
         if value == self._power_on_reset_value and not self._second_try:
             # Just to be sure: try a re-read because we read a PowerOnResetValue
-            self._second_try  = True # Prevent from endless loop
+            self._second_try = True # Prevent from endless loop
             return self.get_temperature()
         self._second_try = False
         return value / 1000.0
