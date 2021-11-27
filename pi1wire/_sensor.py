@@ -25,10 +25,12 @@ class OneWire(OneWireInterface):
         r = self._driver.read_w1_data(self._mac_address)
         crc, check, raw_value = parse_response(r)
         if check != 'YES':
+            self._second_try = False # reset
             raise InvalidCRCException('Invalid CRC [%s]' % crc)
-        if  int(raw_value) == self._power_on_reset_value and not self._second_try:
+        value = int(raw_value)
+        if value == self._power_on_reset_value and not self._second_try:
             # Just to be sure: try a re-read because we read a PowerOnResetValue
-            self._second_try  = True # Prevent from endless loop
-            return get_temperature()
+            self._second_try = True # Prevent from endless loop
+            return self.get_temperature()
         self._second_try = False
-        return int(raw_value) / 1000.0
+        return value / 1000.0
