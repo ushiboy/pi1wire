@@ -1,0 +1,13 @@
+#!/bin/sh
+
+autopep8 -i -r -v pi1wire
+autoflake -i -r -v pi1wire
+isort -v pi1wire
+mypy pi1wire
+pylint pi1wire
+
+autopep8 -i -r -v tests
+autoflake -i -r -v tests
+isort -v tests
+mypy tests
+pylint tests
