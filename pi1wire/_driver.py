@@ -1,9 +1,11 @@
 from ._util import mac_to_dirname
 
+
 class W1DriverInterface:
 
     def read_w1_data(self, mac_address: str) -> str:
         raise NotImplementedError
+
 
 class W1Driver(W1DriverInterface):
 

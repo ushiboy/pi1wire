@@ -1,6 +1,8 @@
 import pytest
+
 from pi1wire._exception import UnsupportResponseException
 from pi1wire._parser import parse_response
+
 
 def test_parse_response():
     r1 = '''96 01 4b 46 7f ff 0a 10 0a : crc=0a YES
