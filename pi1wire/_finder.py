@@ -31,5 +31,5 @@ class Pi1Wire(Pi1WireInterface):
     def find(self, mac_address: str) -> OneWireInterface:
         p = os.path.join(self._base_path, mac_to_dirname(mac_address))
         if not os.path.exists(p):
-            raise NotFoundSensorException('Not found sensor [%s]' % mac_address)
+            raise NotFoundSensorException(f'Not found sensor [{mac_address}]')
         return OneWire(mac_address, self._driver)

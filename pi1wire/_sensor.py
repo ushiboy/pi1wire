@@ -26,7 +26,7 @@ class OneWire(OneWireInterface):
         crc, check, raw_value = parse_response(r)
         if check != 'YES':
             self._second_try = False # reset
-            raise InvalidCRCException('Invalid CRC [%s]' % crc)
+            raise InvalidCRCException(f'Invalid CRC [{crc}]')
         value = int(raw_value)
         if value == self._power_on_reset_value and not self._second_try:
             # Just to be sure: try a re-read because we read a PowerOnResetValue
