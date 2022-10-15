@@ -23,7 +23,7 @@ class Pi1Wire(Pi1WireInterface):
 
     def find_all_sensors(self) -> List[OneWireInterface]:
         sensors: List[OneWireInterface] = []
-        for p in glob.glob(self._base_path + '/*-*'):
+        for p in sorted(glob.glob(self._base_path + '/*-*')):
             mac = dirname_to_mac(os.path.basename(p))
             sensors.append(OneWire(mac, self._driver))
         return sensors
