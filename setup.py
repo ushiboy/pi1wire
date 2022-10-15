@@ -16,6 +16,7 @@ setup(
     version='0.2.0',
     author='ushiboy',
     license='MIT',
+    license_files = ('LICENSE.txt',),
     description='1Wire Sensor Library for Raspberry PI',
     long_description=long_description,
     long_description_content_type='text/markdown',
