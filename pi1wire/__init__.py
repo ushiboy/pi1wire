@@ -1,6 +1,5 @@
-from ._driver import W1DriverInterface, W1Driver
-from ._exception import InvalidCRCException, \
-        NotFoundSensorException, \
-        UnsupportResponseException
-from ._finder import Pi1WireInterface, Pi1Wire
-from ._sensor import OneWireInterface, OneWire
+from ._driver import W1Driver, W1DriverInterface
+from ._exception import (InvalidCRCException, NotFoundSensorException,
+                         UnsupportResponseException)
+from ._finder import Pi1Wire, Pi1WireInterface
+from ._sensor import OneWire, OneWireInterface

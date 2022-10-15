@@ -2,6 +2,7 @@ from ._driver import W1DriverInterface
 from ._exception import InvalidCRCException
 from ._parser import parse_response
 
+
 class OneWireInterface:
 
     _mac_address: str
@@ -12,6 +13,7 @@ class OneWireInterface:
 
     def get_temperature(self) -> float:
         raise NotImplementedError
+
 
 class OneWire(OneWireInterface):
 
@@ -25,12 +27,12 @@ class OneWire(OneWireInterface):
         r = self._driver.read_w1_data(self._mac_address)
         crc, check, raw_value = parse_response(r)
         if check != 'YES':
-            self._second_try = False # reset
-            raise InvalidCRCException('Invalid CRC [%s]' % crc)
+            self._second_try = False  # reset
+            raise InvalidCRCException(f'Invalid CRC [{crc}]')
         value = int(raw_value)
         if value == self._power_on_reset_value and not self._second_try:
             # Just to be sure: try a re-read because we read a PowerOnResetValue
-            self._second_try = True # Prevent from endless loop
+            self._second_try = True  # Prevent from endless loop
             return self.get_temperature()
         self._second_try = False
         return value / 1000.0
