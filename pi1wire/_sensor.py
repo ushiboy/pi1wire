@@ -1,3 +1,4 @@
+from ._constant import Resolution
 from ._driver import W1DriverInterface
 from ._exception import InvalidCRCException
 from ._parser import parse_response
@@ -12,6 +13,9 @@ class OneWireInterface:
         return self._mac_address
 
     def get_temperature(self) -> float:
+        raise NotImplementedError
+
+    def change_resolution(self, resolution: Resolution, use_sudo: bool = True):
         raise NotImplementedError
 
 
@@ -36,3 +40,7 @@ class OneWire(OneWireInterface):
             return self.get_temperature()
         self._second_try = False
         return value / 1000.0
+
+    def change_resolution(self, resolution: Resolution, use_sudo: bool = True):
+        self._driver.change_w1_resolution(
+            self._mac_address, resolution, use_sudo)

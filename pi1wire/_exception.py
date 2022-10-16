@@ -14,3 +14,9 @@ class UnsupportResponseException(Exception):
     '''
     Unsupport Response
     '''
+
+
+class FailedToChangeResolutionException(Exception):
+    '''
+    Failed to change resolution
+    '''

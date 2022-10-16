@@ -48,15 +48,46 @@ The MAC address property of the sensor.
 
 Get the temperature.
 
+#### `change_resolution(resolution: Resolution, use_sudo: bool = True) -> None`
+
+Change the resolution of the temperature sensor.
+
+Depending on the `Resolution` definition, change to a resolution equivalent to increments of 0.5°C, 0.25°C, 0.125°C, or 0.0625°C.
+
+### Resolution
+
+An enumeration that defines the resolution setting values.
+
+#### `X0_5`
+
+Resolution is set at 0.5°C.
+
+#### `X0_25`
+
+Resolution is set at 0.25°C.
+
+#### `X0_125`
+
+Resolution is set at 0.125°C.
+
+#### `X0_0625`
+
+Resolution is set at 0.0625°C.
+
 ## Change Log
+
+### 0.3.0
+
+- Added function to change resolution.
+- Fixed so that the order of sensor detection does not change depending on the file system.
 
 ### 0.2.0
 
-Added check for PowerOnResetValue.
+- Added check for PowerOnResetValue.
 
 ### 0.1.0
 
-Initial release.
+- Initial release.
 
 ## License
 
