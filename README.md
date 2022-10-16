@@ -8,10 +8,13 @@ pi1wire is a library for the Raspberry PI 1Wire sensor.
 Here is a simple usecase.
 
 ```python
-from pi1wire import Pi1Wire
+from pi1wire import Pi1Wire, Resolution
 
 for s in Pi1Wire().find_all_sensors():
-    print('%s = %.2f' % (s.mac_address, s.get_temperature()))
+    print(f'{s.mac_address} = {s.get_temperature():.3f}')
+
+    s.change_resolution(Resolution.X0_5)
+    print(f'{s.mac_address} = {s.get_temperature():.3f}')
 ```
 
 ## OS Environment
@@ -40,6 +43,9 @@ Get a OneWire instance of the specified MAC address.
 
 Change the resolution of all sensors found and get them as a list of OneWire instances.
 
+The executing user must be able to use sudo.
+If the executing user has root privileges and does not need sudo, set the `use_sudo` option to False.
+
 ### OneWire
 
 This class controls the sensors.
@@ -57,6 +63,9 @@ Get the temperature.
 Change the resolution of the temperature sensor.
 
 Depending on the `Resolution` definition, change to a resolution equivalent to increments of 0.5°C, 0.25°C, 0.125°C, or 0.0625°C.
+
+The executing user must be able to use sudo.
+If the executing user has root privileges and does not need sudo, set the `use_sudo` option to False.
 
 ### Resolution
 
