@@ -36,6 +36,10 @@ Get a list of OneWire instances.
 
 Get a OneWire instance of the specified MAC address.
 
+#### `find_all_and_change_resolution(resolution: Resolution, use_sudo: bool = True) -> List[OneWire]`
+
+Change the resolution of all sensors found and get them as a list of OneWire instances.
+
 ### OneWire
 
 This class controls the sensors.
